@@ -9,6 +9,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        welcome_tv.setText("Hello World")
+        val name = intent.getStringExtra("name")
+        welcome_tv.setText("Hello $name welcome to home Activity")
     }
 }

@@ -59,10 +59,7 @@ class LoginActivity : AppCompatActivity() {
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
             }
-            setResult(Activity.RESULT_OK)
-            startActivity(Intent(this, HomeActivity::class.java))
-            //Complete and destroy login activity once successful
-            finish()
+
         })
 
         username.afterTextChanged {
@@ -107,6 +104,15 @@ class LoginActivity : AppCompatActivity() {
             "$welcome $displayName",
             Toast.LENGTH_LONG
         ).show()
+
+
+        setResult(Activity.RESULT_OK)
+        val intent = Intent(this,HomeActivity::class.java)
+        intent.putExtra("name",displayName)
+        startActivity(intent)
+        //Complete and destroy login activity once successful
+        finish()
+
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
